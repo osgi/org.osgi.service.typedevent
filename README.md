@@ -11,7 +11,7 @@ corrections are welcome — please open a pull request.
 
 | Project | Link | Notes |
 |---------|------|-------|
-| _none listed yet_ | | |
+| Apache Aries | [GitHub](https://github.com/apache/aries-typedevent) | |
 
 ## Build
 
