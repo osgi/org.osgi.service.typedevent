@@ -100,6 +100,12 @@
 							<goal>pdf</goal>
 						</goals>
 					</execution>
+					<execution>
+						<id>spec-html</id>
+						<goals>
+							<goal>html</goal>
+						</goals>
+					</execution>
 				</executions>
 			</plugin>
 		</plugins>
