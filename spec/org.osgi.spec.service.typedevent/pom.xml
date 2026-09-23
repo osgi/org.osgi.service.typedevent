@@ -93,14 +93,6 @@
 				<groupId>org.eclipse.osgi-technology.build.tools.maven</groupId>
 				<artifactId>osgi-docbook-maven-plugin</artifactId>
 				<version>0.0.1-SNAPSHOT</version>
-				<executions>
-					<execution>
-						<id>spec-pdf</id>
-						<goals>
-							<goal>pdf</goal>
-						</goals>
-					</execution>
-				</executions>
 			</plugin>
 		</plugins>
 	</build>
