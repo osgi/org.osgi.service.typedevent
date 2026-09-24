@@ -1,0 +1,31 @@
+# Managed by otterdog blueprint codeql-analysis. Do not edit here.
+name: CodeQL
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    - cron: '17 4 * * 3'
+permissions:
+  contents: read
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          persist-credentials: false
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@dfad8f8ebc168f044d22d94180b54591ef6c0321 # v3.34.0
+        with:
+          languages: java
+          build-mode: none
+      - name: Analyze
+        uses: github/codeql-action/analyze@dfad8f8ebc168f044d22d94180b54591ef6c0321 # v3.34.0
+        with:
+          category: "/language:java"
