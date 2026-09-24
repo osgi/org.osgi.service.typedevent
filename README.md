@@ -1,5 +1,7 @@
 # org.osgi.service.typedevent
 
+[![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/osgi/org.osgi.service.typedevent/badge)](https://securityscorecards.dev/viewer/?uri=github.com/osgi/org.osgi.service.typedevent)
+
 OSGi Specification repo for org.osgi.service.typedevent
 
 Part of the [OSGi Specification Project](https://projects.eclipse.org/projects/technology.osgi).
