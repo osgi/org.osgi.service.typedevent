@@ -8,6 +8,7 @@
 		<version>${revision}</version>
 	</parent>
 	<artifactId>org.osgi.service.typedevent</artifactId>
+	<description>OSGi Companion Code for ${project.artifactId} Version ${project.version}</description>
 
 	<dependencies>
 		<dependency>
