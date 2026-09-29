@@ -12,7 +12,7 @@
 		<relativePath>../../pom.xml</relativePath>
 	</parent>
 	<artifactId>org.osgi.spec.service.typedevent</artifactId>
-	<name>OSGi Specification repo for org.osgi.service.typedevent</name>
+	<name>OSGi Typed Event Service Specification</name>
 
 	<dependencies>
 		<dependency>
