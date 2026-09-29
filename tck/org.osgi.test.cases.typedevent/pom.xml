@@ -74,9 +74,9 @@
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.osgi.tck</groupId>
-			<artifactId>org.osgi.test.support</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<groupId>org.osgi</groupId>
+			<artifactId>org.osgi.test.assertj.permission</artifactId>
+			<version>1.4.0-SNAPSHOT</version>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
