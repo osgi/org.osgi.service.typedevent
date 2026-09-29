@@ -37,8 +37,6 @@
 	bnd.identity;id='junit-platform-engine';version='[1.8.2,1.8.3)',\
 	bnd.identity;id='junit-platform-launcher';version='[1.8.2,1.8.3)',\
 	bnd.identity;id='junit-vintage-engine';version='[5.8.2,5.8.3)',\
-	bnd.identity;id='org.hamcrest';version='[2.2.0,2.2.1)',\
-	bnd.identity;id='org.awaitility';version='[4.2.0,4.2.1)',\
 	bnd.identity;id='org.apache.servicemix.bundles.junit';version='[4.13.2.1,4.13.2.2)',\
 	bnd.identity;id='org.opentest4j';version='[1.2.0,1.2.1)',\
 	bnd.identity;id='org.osgi.test.common';version='[1.2.0,1.2.1)',\
@@ -61,8 +59,6 @@
 	junit-platform-engine;version='[1.8.2,1.8.3)',\
 	junit-platform-launcher;version='[1.8.2,1.8.3)',\
 	junit-vintage-engine;version='[5.8.2,5.8.3)',\
-	org.hamcrest;version='[2.2.0,2.2.1)',\
-	org.awaitility;version='[4.2.0,4.2.1)',\
 	org.apache.servicemix.bundles.junit;version='[4.13.2.1,4.13.2.2)',\
 	org.opentest4j;version='[1.2.0,1.2.1)',\
 	org.osgi.test.common;version='[1.2.0,1.2.1)',\
