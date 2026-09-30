@@ -50,9 +50,11 @@ tck.range: ${range;[===,==+);${version_cleanup;${1}}}
 	bnd.identity;id='net.bytebuddy.byte-buddy-agent';version='${tck.range;${byte-buddy.version}}',\
 	bnd.identity;id='org.objenesis';version='${tck.range;${objenesis.version}}'
 
-# Test infrastructure for the junit-platform tester — mirrors the original
-# cnf/repo/osgi.tck.junit-platform lib that every TCK run carried
--runbundles.tck: \
+
+
+# -runbundles is committed and verified by the build; after a dependency
+# change update it with: mvn bnd-resolver:resolve
+-runbundles: \
 	assertj-core;version='${tck.range;${assertj.version}}',\
 	junit-jupiter-api;version='${tck.range;${junit-jupiter.version}}',\
 	junit-jupiter-engine;version='${tck.range;${junit-jupiter.version}}',\
@@ -60,46 +62,25 @@ tck.range: ${range;[===,==+);${version_cleanup;${1}}}
 	junit-platform-commons;version='${tck.range;${junit-platform.version}}',\
 	junit-platform-engine;version='${tck.range;${junit-platform.version}}',\
 	junit-platform-launcher;version='${tck.range;${junit-platform.version}}',\
-	org.opentest4j;version='${tck.range;${opentest4j.version}}',\
-	org.osgi.test.common;version='${tck.range;${osgi-test.version}}',\
-	org.osgi.test.assertj.framework;version='${tck.range;${osgi-test.version}}',\
-	org.osgi.test.assertj.permission;version='${tck.range;${osgi-test.version}}',\
-	org.osgi.test.junit5;version='${tck.range;${osgi-test.version}}',\
-	org.mockito.mockito-core;version='${tck.range;${mockito.version}}',\
 	net.bytebuddy.byte-buddy;version='${tck.range;${byte-buddy.version}}',\
 	net.bytebuddy.byte-buddy-agent;version='${tck.range;${byte-buddy.version}}',\
-	org.objenesis;version='${tck.range;${objenesis.version}}'
-
-
-# -runbundles is committed and verified by the build; after a dependency
-# change update it with: mvn bnd-resolver:resolve
--runbundles: \
-	assertj-core;version='[3.27.7,3.27.8)',\
-	junit-jupiter-api;version='[5.12.2,5.12.3)',\
-	junit-jupiter-engine;version='[5.12.2,5.12.3)',\
-	junit-jupiter-params;version='[5.12.2,5.12.3)',\
-	junit-platform-commons;version='[1.12.2,1.12.3)',\
-	junit-platform-engine;version='[1.12.2,1.12.3)',\
-	junit-platform-launcher;version='[1.12.2,1.12.3)',\
-	net.bytebuddy.byte-buddy;version='[1.18.14,1.18.15)',\
-	net.bytebuddy.byte-buddy-agent;version='[1.18.14,1.18.15)',\
-	org.apache.aries.component-dsl.component-dsl;version='[1.2.2,1.2.3)',\
-	org.apache.aries.typedevent.bus;version='[1.1.0,1.1.1)',\
-	org.apache.felix.configadmin;version='[1.9.26,1.9.27)',\
-	org.apache.felix.scr;version='[2.2.10,2.2.11)',\
-	org.mockito.mockito-core;version='[4.6.1,4.6.2)',\
-	org.objenesis;version='[3.2.0,3.2.1)',\
-	org.opentest4j;version='[1.3.0,1.3.1)',\
-	org.osgi.service.component;version='[1.5.1,1.5.2)',\
-	org.osgi.service.typedevent;version='[1.0.1,1.0.2)',\
-	org.osgi.test.assertj.framework;version='[1.4.0,1.4.1)',\
-	org.osgi.test.assertj.permission;version='[1.4.0,1.4.1)',\
-	org.osgi.test.cases.typedevent;version='[1.0.1,1.0.2)',\
-	org.osgi.test.common;version='[1.4.0,1.4.1)',\
-	org.osgi.test.junit5;version='[1.4.0,1.4.1)',\
-	org.osgi.util.converter;version='[1.0.9,1.0.10)',\
-	org.osgi.util.function;version='[1.2.0,1.2.1)',\
-	org.osgi.util.promise;version='[1.3.0,1.3.1)',\
-	org.osgi.util.pushstream;version='[1.1.0,1.1.1)',\
-	slf4j.api;version='[1.7.36,1.7.37)',\
-	slf4j.simple;version='[1.7.36,1.7.37)'
+	org.apache.aries.component-dsl.component-dsl;version='${tck.range;${org.apache.aries.component-dsl.component-dsl.version}}',\
+	org.apache.aries.typedevent.bus;version='${tck.range;${org.apache.aries.typedevent.bus.version}}',\
+	org.apache.felix.configadmin;version='${tck.range;${org.apache.felix.configadmin.version}}',\
+	org.apache.felix.scr;version='${tck.range;${org.apache.felix.scr.version}}',\
+	org.mockito.mockito-core;version='${tck.range;${mockito.version}}',\
+	org.objenesis;version='${tck.range;${objenesis.version}}',\
+	org.opentest4j;version='${tck.range;${opentest4j.version}}',\
+	org.osgi.service.component;version='${tck.range;${org.osgi.service.component.version}}',\
+	org.osgi.service.typedevent;version='${tck.range;${revision}}',\
+	org.osgi.test.assertj.framework;version='${tck.range;${osgi-test.version}}',\
+	org.osgi.test.assertj.permission;version='${tck.range;${osgi-test.version}}',\
+	org.osgi.test.cases.typedevent;version='${tck.range;${revision}}',\
+	org.osgi.test.common;version='${tck.range;${osgi-test.version}}',\
+	org.osgi.test.junit5;version='${tck.range;${osgi-test.version}}',\
+	org.osgi.util.converter;version='${tck.range;${org.osgi.util.converter.version}}',\
+	org.osgi.util.function;version='${tck.range;${org.osgi.util.function.version}}',\
+	org.osgi.util.promise;version='${tck.range;${org.osgi.util.promise.version}}',\
+	org.osgi.util.pushstream;version='${tck.range;${org.osgi.util.pushstream.version}}',\
+	slf4j.api;version='${tck.range;${slf4j-api.version}}',\
+	slf4j.simple;version='${tck.range;${slf4j-simple.version}}'
