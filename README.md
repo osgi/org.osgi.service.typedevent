@@ -1,6 +1,8 @@
 # org.osgi.service.typedevent
 
 [![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/osgi/org.osgi.service.typedevent/badge)](https://securityscorecards.dev/viewer/?uri=github.com/osgi/org.osgi.service.typedevent)
+[![build](https://github.com/osgi/org.osgi.service.typedevent/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/osgi/org.osgi.service.typedevent/actions/workflows/build.yml)
+[![Maven Central](https://img.shields.io/maven-central/v/org.osgi/org.osgi.service.typedevent)](https://central.sonatype.com/artifact/org.osgi/org.osgi.service.typedevent)
 
 OSGi Specification repo for org.osgi.service.typedevent
 
