@@ -18,7 +18,8 @@
 
 package org.osgi.test.cases.typedevent.junit;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.HashMap;
 
@@ -54,44 +55,44 @@ public class TypedEventBusInputValueTest {
 	@Test
 	public void test_deliver_null_should_throws_exception() {
 
-		assertThatNullPointerException().isThrownBy(() -> {
+		assertThatThrownBy(() -> {
 			typedEventBus.deliver(null);
-		});
+		}).isInstanceOf(NullPointerException.class);
 
 	}
 
 	@Test
 	public void test_deliver_2_topic_null_should_throws_exception() {
 
-		assertThatNullPointerException().isThrownBy(() -> {
+		assertThatThrownBy(() -> {
 			typedEventBus.deliver(null, dto);
-		});
+		}).isInstanceOf(NullPointerException.class);
 
 	}
 
 	@Test
 	public void test_deliver_2_event_null_should_throws_exception() {
 
-		assertThatNullPointerException().isThrownBy(() -> {
+		assertThatThrownBy(() -> {
 			typedEventBus.deliver("a", null);
-		});
+		}).isInstanceOf(NullPointerException.class);
 
 	}
 
 	@Test
 	public void test_deliveruntyped_topic_null_should_throws_exception() {
 
-		assertThatNullPointerException().isThrownBy(() -> {
+		assertThatThrownBy(() -> {
 			typedEventBus.deliverUntyped(null, new HashMap<>());
-		});
+		}).isInstanceOf(NullPointerException.class);
 	}
 
 	@Test
 	public void test_deliveruntyped_map_null_should_throws_exception() {
 
-		assertThatNullPointerException().isThrownBy(() -> {
+		assertThatThrownBy(() -> {
 			typedEventBus.deliverUntyped("a", null);
-		});
+		}).isInstanceOf(NullPointerException.class);
 	}
 
 	@ParameterizedTest
@@ -103,9 +104,9 @@ public class TypedEventBusInputValueTest {
 	})
 	public void test_deliver_2_topic_invalid_should_throws_exception(
 			String invalidTopic) {
-		assertThatIllegalArgumentException().isThrownBy(() -> {
+		assertThatThrownBy(() -> {
 			typedEventBus.deliver(invalidTopic, dto);
-		});
+		}).isInstanceOf(IllegalArgumentException.class);
 	}
 
 	@ParameterizedTest

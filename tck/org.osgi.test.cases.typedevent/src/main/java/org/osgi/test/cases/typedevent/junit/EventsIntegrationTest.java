@@ -18,13 +18,13 @@
 
 package org.osgi.test.cases.typedevent.junit;
 
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.Mockito.mock;
 import static org.osgi.test.common.dictionary.Dictionaries.dictionaryOf;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -138,7 +138,7 @@ public class EventsIntegrationTest {
 							new String[] {
 									"*"
 							}));
-			Assertions.assertThatThrownBy(() -> {
+			assertThatThrownBy(() -> {
 				eventBus.deliver(e1);
 			});
 
