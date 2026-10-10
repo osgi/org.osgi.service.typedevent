@@ -116,17 +116,6 @@
 			<scope>runtime</scope>
 		</dependency>
 		<!--
-			The classic tester used by the launch suites: they start the
-			framework themselves (-runframework none), so the tester lives on
-			the class path instead of being a bundle inside the framework.
-		-->
-		<dependency>
-			<groupId>biz.aQute.bnd</groupId>
-			<artifactId>biz.aQute.junit</artifactId>
-			<version>${bnd.version}</version>
-			<scope>runtime</scope>
-		</dependency>
-		<!--
 			The test infrastructure, at the versions the original build used.
 			It is declared as a real dependency because the bnd resolver only
 			sees what is in the Maven tree — listing it in the bndrun alone is

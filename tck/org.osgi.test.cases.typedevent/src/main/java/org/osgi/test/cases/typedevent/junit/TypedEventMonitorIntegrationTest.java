@@ -18,7 +18,6 @@
 package org.osgi.test.cases.typedevent.junit;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
 
 import java.lang.reflect.InvocationTargetException;
@@ -162,7 +161,7 @@ public class TypedEventMonitorIntegrationTest {
 
 		List<MonitorEvent> events = eventsPromise.getValue();
 
-		assertTrue(events.isEmpty());
+		assertThat(events).isEmpty();
 
 		eventsPromise = monitor.monitorEvents(2)
 				.limit(Duration.ofSeconds(1))
@@ -222,7 +221,7 @@ public class TypedEventMonitorIntegrationTest {
 
 		List<MonitorEvent> events = eventsPromise.getValue();
 
-		assertTrue(events.isEmpty());
+		assertThat(events).isEmpty();
 
 		eventsPromise = monitor.monitorEvents(beforeFirst)
 				.limit(Duration.ofSeconds(1))

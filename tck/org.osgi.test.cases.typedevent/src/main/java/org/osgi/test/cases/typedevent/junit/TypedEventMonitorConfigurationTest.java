@@ -154,8 +154,8 @@ public class TypedEventMonitorConfigurationTest {
 					.getEffectiveHistoryStorage("unconfigured/topic");
 
 			assertThat(effective).isNotNull();
-			assertThat(effective.getMinimum()).isEqualTo(0);
-			assertThat(effective.getMaximum()).isEqualTo(0);
+			assertThat(effective.getMinimum()).isZero();
+			assertThat(effective.getMaximum()).isZero();
 		}
 
 		@Test
@@ -211,7 +211,7 @@ public class TypedEventMonitorConfigurationTest {
 			int allocated = monitor.configureHistoryStorage(wildcardFilter,
 					policy);
 
-			assertThat(allocated).isGreaterThanOrEqualTo(0);
+			assertThat(allocated).isNotNegative();
 		}
 
 		@Test

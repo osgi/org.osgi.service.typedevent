@@ -61,7 +61,7 @@ public class RangePolicyTest {
 		public void atMostSetsMaxWithZeroMin() {
 			RangePolicy policy = RangePolicy.atMost(200);
 
-			assertThat(policy.getMinimum()).isEqualTo(0);
+			assertThat(policy.getMinimum()).isZero();
 			assertThat(policy.getMaximum()).isEqualTo(200);
 		}
 
@@ -69,15 +69,15 @@ public class RangePolicyTest {
 		public void noneReturnsZeroRange() {
 			RangePolicy policy = RangePolicy.none();
 
-			assertThat(policy.getMinimum()).isEqualTo(0);
-			assertThat(policy.getMaximum()).isEqualTo(0);
+			assertThat(policy.getMinimum()).isZero();
+			assertThat(policy.getMaximum()).isZero();
 		}
 
 		@Test
 		public void unlimitedReturnsMaxRange() {
 			RangePolicy policy = RangePolicy.unlimited();
 
-			assertThat(policy.getMinimum()).isEqualTo(0);
+			assertThat(policy.getMinimum()).isZero();
 			assertThat(policy.getMaximum()).isEqualTo(Integer.MAX_VALUE);
 		}
 
@@ -109,23 +109,23 @@ public class RangePolicyTest {
 		public void rangeWithZeroMinAndMaxIsValid() {
 			RangePolicy policy = RangePolicy.range(0, 0);
 
-			assertThat(policy.getMinimum()).isEqualTo(0);
-			assertThat(policy.getMaximum()).isEqualTo(0);
+			assertThat(policy.getMinimum()).isZero();
+			assertThat(policy.getMaximum()).isZero();
 		}
 
 		@Test
 		public void exactWithZeroIsValid() {
 			RangePolicy policy = RangePolicy.exact(0);
 
-			assertThat(policy.getMinimum()).isEqualTo(0);
-			assertThat(policy.getMaximum()).isEqualTo(0);
+			assertThat(policy.getMinimum()).isZero();
+			assertThat(policy.getMaximum()).isZero();
 		}
 
 		@Test
 		public void atLeastWithZeroIsValid() {
 			RangePolicy policy = RangePolicy.atLeast(0);
 
-			assertThat(policy.getMinimum()).isEqualTo(0);
+			assertThat(policy.getMinimum()).isZero();
 			assertThat(policy.getMaximum()).isEqualTo(Integer.MAX_VALUE);
 		}
 
@@ -133,8 +133,8 @@ public class RangePolicyTest {
 		public void atMostWithZeroIsValid() {
 			RangePolicy policy = RangePolicy.atMost(0);
 
-			assertThat(policy.getMinimum()).isEqualTo(0);
-			assertThat(policy.getMaximum()).isEqualTo(0);
+			assertThat(policy.getMinimum()).isZero();
+			assertThat(policy.getMaximum()).isZero();
 		}
 	}
 
@@ -187,7 +187,7 @@ public class RangePolicyTest {
 		public void rangeWithMaxIntegerValues() {
 			RangePolicy policy = RangePolicy.range(0, Integer.MAX_VALUE);
 
-			assertThat(policy.getMinimum()).isEqualTo(0);
+			assertThat(policy.getMinimum()).isZero();
 			assertThat(policy.getMaximum()).isEqualTo(Integer.MAX_VALUE);
 		}
 
@@ -211,7 +211,7 @@ public class RangePolicyTest {
 		public void atMostWithMaxIntegerValue() {
 			RangePolicy policy = RangePolicy.atMost(Integer.MAX_VALUE);
 
-			assertThat(policy.getMinimum()).isEqualTo(0);
+			assertThat(policy.getMinimum()).isZero();
 			assertThat(policy.getMaximum()).isEqualTo(Integer.MAX_VALUE);
 		}
 
