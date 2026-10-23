@@ -10,55 +10,27 @@
 	<groupId>org.osgi.tck</groupId>
 	<artifactId>org.osgi.test.cases.typedevent</artifactId>
 
-	<dependencyManagement>
-		<dependencies>
-		<dependency>
-			<groupId>org.junit.platform</groupId>
-			<artifactId>junit-platform-commons</artifactId>
-			<version>${junit-platform.version}</version>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.junit.platform</groupId>
-			<artifactId>junit-platform-engine</artifactId>
-			<version>${junit-platform.version}</version>
-			<scope>compile</scope>
-		</dependency>
-			<dependency>
-				<groupId>org.junit</groupId>
-				<artifactId>junit-bom</artifactId>
-				<version>${junit-jupiter.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
-
 	<dependencies>
 		<dependency>
 			<groupId>org.assertj</groupId>
 			<artifactId>assertj-core</artifactId>
 			<!-- tck/pom.xml: the bundle imports [x.y,4) of this version, the
 			     run must provide at least that. -->
-			<version>${assertj.version}</version>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-api</artifactId>
-			<version>${junit-jupiter.version}</version>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-params</artifactId>
-			<version>${junit-jupiter.version}</version>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.osgi</groupId>
 			<artifactId>org.osgi.test.assertj.permission</artifactId>
-			<version>${osgi-test.version}</version>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
@@ -71,19 +43,16 @@
 		<dependency>
 			<groupId>org.osgi</groupId>
 			<artifactId>org.osgi.test.common</artifactId>
-			<version>${osgi-test.version}</version>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.osgi</groupId>
 			<artifactId>org.osgi.test.junit5</artifactId>
-			<version>${osgi-test.version}</version>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.osgi</groupId>
 			<artifactId>org.osgi.test.assertj.framework</artifactId>
-			<version>${osgi-test.version}</version>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
@@ -113,7 +82,6 @@
 		<dependency>
 			<groupId>org.mockito</groupId>
 			<artifactId>mockito-core</artifactId>
-			<version>${mockito.version}</version>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
