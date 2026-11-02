@@ -88,13 +88,21 @@
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
-			<version>${slf4j-api.version}</version>
+			<version>${slf4j.version}</version>
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-simple</artifactId>
-			<version>${slf4j-simple.version}</version>
+			<version>${slf4j.version}</version>
+			<scope>runtime</scope>
+		</dependency>
+		<!-- slf4j-api 2 finds slf4j-simple with the ServiceLoader, which
+		     needs a Service Loader Mediator: SPI Fly -->
+		<dependency>
+			<groupId>org.apache.aries.spifly</groupId>
+			<artifactId>org.apache.aries.spifly.dynamic.framework.extension</artifactId>
+			<version>${org.apache.aries.spifly.dynamic.framework.extension.version}</version>
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>

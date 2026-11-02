@@ -56,6 +56,8 @@ tck.range: ${range;[===,==+);${version_cleanup;${1}}}
 
 # -runbundles is committed and verified by the build; after a dependency
 # change update it with: mvn bnd-resolver:resolve
+# slf4j 2 binds its provider once, at the first logger: slf4j starts at
+# level 1, before the implementation (all others at 2), or it logs nothing.
 -runbundles: \
 	assertj-core;version='${tck.range;${assertj.version}}',\
 	junit-jupiter-api;version='${tck.range;${junit-jupiter.version}}',\
@@ -67,6 +69,7 @@ tck.range: ${range;[===,==+);${version_cleanup;${1}}}
 	net.bytebuddy.byte-buddy;version='${tck.range;${byte-buddy.version}}',\
 	net.bytebuddy.byte-buddy-agent;version='${tck.range;${byte-buddy.version}}',\
 	org.apache.aries.component-dsl.component-dsl;version='${tck.range;${org.apache.aries.component-dsl.component-dsl.version}}',\
+	org.apache.aries.spifly.dynamic.framework.extension;version='${tck.range;${org.apache.aries.spifly.dynamic.framework.extension.version}}',\
 	org.apache.aries.typedevent.bus;version='${tck.range;${org.apache.aries.typedevent.bus.version}}',\
 	org.apache.felix.configadmin;version='${tck.range;${org.apache.felix.configadmin.version}}',\
 	org.apache.felix.scr;version='${tck.range;${org.apache.felix.scr.version}}',\
@@ -84,5 +87,5 @@ tck.range: ${range;[===,==+);${version_cleanup;${1}}}
 	org.osgi.util.function;version='${tck.range;${org.osgi.util.function.version}}',\
 	org.osgi.util.promise;version='${tck.range;${org.osgi.util.promise.version}}',\
 	org.osgi.util.pushstream;version='${tck.range;${org.osgi.util.pushstream.version}}',\
-	slf4j.api;version='${tck.range;${slf4j-api.version}}',\
-	slf4j.simple;version='${tck.range;${slf4j-simple.version}}'
+	slf4j.api;version='${tck.range;${slf4j.version}}';startlevel=1,\
+	slf4j.simple;version='${tck.range;${slf4j.version}}';startlevel=1
