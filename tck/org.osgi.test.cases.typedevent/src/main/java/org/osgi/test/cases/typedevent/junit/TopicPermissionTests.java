@@ -232,6 +232,50 @@ public class TopicPermissionTests {
 		assertThat(p46).isSerializable();
 	}
 
+	@Test
+	public void testSingleLevelWildcardsInCollection() {
+		TopicPermission p51 = new TopicPermission("com/+/service5",
+				"subscribe");
+		TopicPermission p52 = new TopicPermission("com/+/*", "subscribe");
+		TopicPermission p53 = new TopicPermission("+", "subscribe");
+		TopicPermission p54 = new TopicPermission("com/foo/service5",
+				"subscribe");
+		TopicPermission p55 = new TopicPermission("com/foo/bar/baz",
+				"subscribe");
+		TopicPermission p56 = new TopicPermission("com", "subscribe");
+		TopicPermission p57 = new TopicPermission("com/foo", "subscribe");
+
+		// A collection holding only a single-level wildcard implies the
+		// topics that the wildcard permission itself implies
+		assertThat(p51.newPermissionCollection()).accepts(p51)
+				.implies(p51, p54)
+				.doesNotImply(p55, p56, p57);
+
+		assertThat(p52.newPermissionCollection()).accepts(p52)
+				.implies(p52, p54, p55)
+				.doesNotImply(p56, p57);
+
+		assertThat(p53.newPermissionCollection()).accepts(p53)
+				.implies(p53, p56)
+				.doesNotImply(p54, p55, p57);
+	}
+
+	@Test
+	public void testSingleLevelWildcardActionsInCollection() {
+		TopicPermission p61 = new TopicPermission("com/+/service6",
+				"publish");
+		TopicPermission p62 = new TopicPermission("com/foo/*", "subscribe");
+		TopicPermission p63 = new TopicPermission("com/foo/service6",
+				"publish,subscribe");
+
+		// The actions of a single-level wildcard combine with the actions of
+		// the other permissions in the collection
+		assertThat(p61.newPermissionCollection()).accepts(p61)
+				.doesNotImply(p63)
+				.accepts(p62)
+				.implies(p63);
+	}
+
 	private static void invalidTopicPermission(String name, String actions) {
 		assertThatIllegalArgumentException()
 				.as("TopicPermission(%s, %s) created with invalid actions", name, actions)

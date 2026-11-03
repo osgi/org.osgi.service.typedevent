@@ -6,3 +6,4 @@ generated/
 .project
 .settings/
 .flattened-pom.xml
+.cifuzz-corpus/

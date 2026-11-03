@@ -440,7 +440,7 @@ public final class TopicPermission extends Permission {
 	 * @param requestedName The topic name to check
 	 * @return {@code true} if the topic name matches this permission's pattern
 	 */
-	private boolean impliesTopicName(String requestedName) {
+	boolean impliesTopicName(String requestedName) {
 		// Check if the requested name starts with our prefix
 		if (!requestedName.startsWith(prefix)) {
 			return false;
@@ -776,6 +776,19 @@ final class TopicPermissionCollection extends PermissionCollection {
 				}
 			}
 			offset = last - 1;
+		}
+		// single-level wildcards ("+") cannot be found by a key lookup:
+		// match each such pattern against the requested topic name
+		synchronized (this) {
+			for (TopicPermission tp : permissions.values()) {
+				if (tp.getName().indexOf('+') >= 0
+						&& tp.impliesTopicName(requested.getName())) {
+					effective |= tp.getActionsMask();
+					if ((effective & desired) == desired) {
+						return true;
+					}
+				}
+			}
 		}
 		// we don't have to check for "*" as it was already checked
 		// at the top (all_allowed), so we just return false
