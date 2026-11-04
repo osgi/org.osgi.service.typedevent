@@ -36,6 +36,10 @@ public interface TypedEventBus {
 	 * to the caller before delivery of the event is completed. Events are
 	 * delivered in the order that they are received by this method.
 	 * <p>
+	 * The event data must be a tree. If it contains a cycle the event may be
+	 * delivered, partially delivered, or not delivered at all, but this does
+	 * not affect the delivery of subsequent events.
+	 * <p>
 	 * The topic for this event will be automatically set to the fully qualified
 	 * type name for the supplied event object.
 	 * <p>
@@ -52,6 +56,10 @@ public interface TypedEventBus {
 	 * Initiate asynchronous, ordered delivery of an event. This method returns
 	 * to the caller before delivery of the event is completed. Events are
 	 * delivered in the order that they are received by this method.
+	 * <p>
+	 * The event data must be a tree. If it contains a cycle the event may be
+	 * delivered, partially delivered, or not delivered at all, but this does
+	 * not affect the delivery of subsequent events.
 	 * 
 	 * @param topic The topic to which this event should be sent.
 	 * @param event The event to send to all listeners which subscribe to the
@@ -66,6 +74,10 @@ public interface TypedEventBus {
 	 * Initiate asynchronous, ordered delivery of event data. This method
 	 * returns to the caller before delivery of the event is completed. Events
 	 * are delivered in the order that they are received by this method.
+	 * <p>
+	 * The event data must be a tree. If it contains a cycle the event may be
+	 * delivered, partially delivered, or not delivered at all, but this does
+	 * not affect the delivery of subsequent events.
 	 * 
 	 * @param topic The topic to which this event should be sent.
 	 * @param event A Map representation of the event data to send to all
