@@ -195,7 +195,7 @@
       not be portable between different implementations of this
       specification.</para>
 
-      <section>
+      <section xml:id="typedevent.nested.data">
         <title>Nested Data Structures</title>
 
         <para>OSGi DTOs are permitted to have data values which are also DTOs,
@@ -203,6 +203,16 @@
         for Type Safe Events, but with the same restriction that the event
         data must be a tree. There is no restriction on the depth of nesting
         permitted.</para>
+
+        <para>The Typed Event Service is not required to check that event
+        data is a tree, as this may be expensive and, because event delivery
+        is asynchronous, the sender cannot be told of a failure. If the data
+        of an event contains a cycle, that is a value which directly or
+        indirectly contains itself, then the event may be delivered, partially
+        delivered, or not delivered at all, and the data seen by an Event
+        Handler may be incomplete. Delivering such an event must not leave the
+        Typed Event Service in an invalid state. Subsequent events which do
+        not contain cycles must be delivered normally.</para>
       </section>
     </section>
 
@@ -229,9 +239,10 @@
 
       <para>Untyped Event instances are capable of representing exactly the
       same data as present in a Type Safe Event instance, and are also subject
-      to the same restrictions, that is the data must be a tree. Nested data
-      should be included as sub-maps within the event map, and these sub-maps
-      may in turn contain nested data.</para>
+      to the same restrictions, that is the data must be a tree, with the
+      consequences described in <xref linkend="typedevent.nested.data"/>.
+      Nested data should be included as sub-maps within the event map, and
+      these sub-maps may in turn contain nested data.</para>
     </section>
 
     <section>

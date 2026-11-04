@@ -18,7 +18,6 @@
 
 package org.osgi.test.cases.typedevent.junit;
 
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.Mockito.mock;
 import static org.osgi.test.common.dictionary.Dictionaries.dictionaryOf;
 
@@ -114,7 +113,14 @@ public class EventsIntegrationTest {
 
 		}
 
-		// @Test
+		/**
+		 * The event data must be a tree, but the implementation is not required
+		 * to check this. An event with a cycle may or may not be delivered, so
+		 * nothing is asserted about it, but it must not stop later events from
+		 * being delivered.
+		 */
+		@SuppressWarnings("unchecked")
+		@Test
 		public void test_deliver_nested_events_tree()
 				throws InterruptedException {
 
@@ -123,31 +129,55 @@ public class EventsIntegrationTest {
 			e1.eventNonTree = e2;
 			e2.eventNonTree = e1;
 
+			EventA eventA = new EventA();
+			eventA.a = "a";
+
+			// Handlers for the cyclic event, so that delivery is attempted
+			TypedEventHandler<EventNonTree> cyclicTypedHandler = (topic,
+					event) -> {
+			};
+			UntypedEventHandler cyclicUntypedHandler = (topic, event) -> {
+			};
+
 			TypedEventHandler<Object> typedHandler = mock(
 					TypedEventHandlerObject.class);
 
 			UntypedEventHandler untypedHandler = mock(
 					UntypedEventHandler.class);
 
-			context.registerService(TypedEventHandler.class, typedHandler,
+			context.registerService(TypedEventHandler.class, cyclicTypedHandler,
 					dictionaryOf(TypedEventConstants.TYPED_EVENT_TYPE,
 							EventNonTree.class.getName()));
 
+			context.registerService(UntypedEventHandler.class,
+					cyclicUntypedHandler,
+					dictionaryOf(TypedEventConstants.TYPED_EVENT_TOPICS,
+							EventNonTree.class.getName().replace(".", "/")));
+
+			context.registerService(TypedEventHandler.class, typedHandler,
+					dictionaryOf(TypedEventConstants.TYPED_EVENT_TYPE,
+							EventA.class.getName()));
+
 			context.registerService(UntypedEventHandler.class, untypedHandler,
 					dictionaryOf(TypedEventConstants.TYPED_EVENT_TOPICS,
-							new String[] {
-									"*"
-							}));
-			assertThatThrownBy(() -> {
+							TOPIC_A));
+
+			try {
 				eventBus.deliver(e1);
-			});
+			} catch (RuntimeException e) {
+				// Permitted, the event may be rejected
+			}
 
-			Mockito.verify(typedHandler, Mockito.after(1000).never())
-					.notify(Mockito.any(), Mockito.any());
+			eventBus.deliver(eventA);
 
-			Mockito.verify(untypedHandler, Mockito.after(1000).never())
-					.notifyUntyped(Mockito.any(), Mockito.any());
+			Mockito.verify(typedHandler, Mockito.timeout(5000))
+					.notify(Mockito.eq(TOPIC_A),
+							Mockito.argThat(evA -> evA instanceof EventA
+									&& "a".equals(((EventA) evA).a)));
 
+			Mockito.verify(untypedHandler, Mockito.timeout(5000))
+					.notifyUntyped(Mockito.eq(TOPIC_A), Mockito.argThat(
+							map -> "a".equals(map.get("a"))));
 		}
 
 		@SuppressWarnings({

@@ -44,6 +44,10 @@ public interface TypedEventPublisher<T> extends AutoCloseable {
 	 * Initiate asynchronous, ordered delivery of an event. This method returns
 	 * to the caller before delivery of the event is completed. Events are
 	 * delivered in the order that they are received by this method.
+	 * <p>
+	 * The event data must be a tree. If it contains a cycle the event may be
+	 * delivered, partially delivered, or not delivered at all, but this does
+	 * not affect the delivery of subsequent events.
 	 * 
 	 * @param event The event to send to all listeners which subscribe to the
 	 *            topic of the event.
@@ -57,6 +61,10 @@ public interface TypedEventPublisher<T> extends AutoCloseable {
 	 * Initiate asynchronous, ordered delivery of event data. This method
 	 * returns to the caller before delivery of the event is completed. Events
 	 * are delivered in the order that they are received by this method.
+	 * <p>
+	 * The event data must be a tree. If it contains a cycle the event may be
+	 * delivered, partially delivered, or not delivered at all, but this does
+	 * not affect the delivery of subsequent events.
 	 * 
 	 * @param event A Map representation of the event data to send to all
 	 *            listeners which subscribe to the topic.
