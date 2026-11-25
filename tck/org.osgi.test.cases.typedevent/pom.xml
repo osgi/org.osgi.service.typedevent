@@ -9,6 +9,7 @@
 	</parent>
 	<groupId>org.osgi.tck</groupId>
 	<artifactId>org.osgi.test.cases.typedevent</artifactId>
+	<name>OSGi Typed Event Service TCK Test Cases</name>
 
 	<dependencies>
 		<dependency>
