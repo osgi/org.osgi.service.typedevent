@@ -16,14 +16,13 @@
 	<parent>
 		<groupId>org.osgi</groupId>
 		<artifactId>org.osgi.maven.pom.parent</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>0.0.1</version>
 	</parent>
 
-	<!-- The SNAPSHOT parent is deployed to Central snapshots, not Maven
-	     Central. The repositories declared in the parent cannot help to
-	     resolve the parent itself, but repositories declared here in the
-	     child are used for parent resolution — without this block a fresh
-	     clone cannot build. Remove once the parent is a Central release. -->
+	<!-- Snapshot repositories, kept on purpose: they let this repository try
+	     SNAPSHOT versions of the parent pom, the docbook plugin and the TCK
+	     support before they are released. They are declared here because the
+	     repositories of a parent cannot help to resolve the parent itself. -->
 	<repositories>
 		<repository>
 			<id>central-snapshots</id>
@@ -37,9 +36,9 @@
 			</snapshots>
 		</repository>
 	</repositories>
-	<!-- Plugin and build-extension dependencies (e.g. the tck-bnd-plugins
-	     jar on the bnd-maven-plugin classpath) resolve via
-	     pluginRepositories, not repositories — same snapshot store. -->
+	<!-- Plugin and build-extension dependencies (the docbook plugin, the
+	     tck-bnd-plugins jar on the bnd-maven-plugin classpath) resolve via
+	     pluginRepositories, not repositories: the same snapshot store. -->
 	<pluginRepositories>
 		<pluginRepository>
 			<id>central-snapshots</id>
