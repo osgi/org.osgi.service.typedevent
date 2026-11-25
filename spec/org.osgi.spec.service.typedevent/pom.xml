@@ -91,7 +91,7 @@
 			<plugin>
 				<groupId>org.eclipse.osgi-technology.build.tools.maven</groupId>
 				<artifactId>osgi-docbook-maven-plugin</artifactId>
-				<version>0.0.1-SNAPSHOT</version>
+				<version>0.0.1</version>
 			</plugin>
 		</plugins>
 	</build>

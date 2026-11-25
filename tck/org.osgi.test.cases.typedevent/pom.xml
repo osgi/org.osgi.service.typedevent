@@ -36,7 +36,7 @@
 		<dependency>
 			<groupId>org.osgi.tck</groupId>
 			<artifactId>org.osgi.tck.signature</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>0.0.1</version>
 			<scope>compile</scope>
 		</dependency>
 		<!-- In the original the global bnd buildpath supplies the org.osgi.test libraries -->
@@ -111,7 +111,7 @@
 					<dependency>
 						<groupId>org.osgi.tck</groupId>
 						<artifactId>tck-bnd-plugins</artifactId>
-						<version>0.0.1-SNAPSHOT</version>
+						<version>0.0.1</version>
 					</dependency>
 				</dependencies>
 			</plugin>
