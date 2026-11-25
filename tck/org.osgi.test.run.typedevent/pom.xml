@@ -9,6 +9,7 @@
 	</parent>
 	<groupId>org.osgi.tck</groupId>
 	<artifactId>org.osgi.test.run.typedevent</artifactId>
+	<name>OSGi Typed Event Service TCK Run</name>
 
 	<properties>
 		<!-- The keystore of the secure suites, as an absolute path. The test VM
