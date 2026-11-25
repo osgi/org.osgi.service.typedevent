@@ -123,4 +123,39 @@
 			</plugin>
 		</plugins>
 	</build>
+
+	<profiles>
+		<!-- One off, for the release candidate 1.1.0-RC1 only. A release candidate
+		     deploys just this module, so the reactor pom that is its parent is not on
+		     Maven Central. Inline the parent in the published pom and keep the snapshot
+		     repositories and the build setup of the parent out of it. Not active for
+		     SNAPSHOT builds or for the release, which deploys the reactor too.
+		     Remove it once 1.1.0-RC1 is published. -->
+		<profile>
+			<id>release-candidate-1.1.0-RC1</id>
+			<activation>
+				<property>
+					<name>revision</name>
+					<value>1.1.0-RC1</value>
+				</property>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>flatten-maven-plugin</artifactId>
+						<configuration>
+							<flattenMode>oss</flattenMode>
+							<pomElements>
+								<repositories>remove</repositories>
+								<pluginRepositories>remove</pluginRepositories>
+								<distributionManagement>remove</distributionManagement>
+								<build>remove</build>
+							</pomElements>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 </project>
